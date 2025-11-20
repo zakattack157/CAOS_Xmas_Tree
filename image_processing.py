@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib as plt
-import PIL import Image
+from PIL import Image
 
 def convert_to_greyscale():
 
@@ -12,12 +12,3 @@ def convert_to_greyscale():
 
 	#Grayscale conversion formula: Y= 0.299*R + 0.587*G + 0.114*B
 	gray_img = np.dot (img_array[..., :3], [0.299, 0.587, 0.114])
-
-	
-
-
-
-
-
-
-
