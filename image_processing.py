@@ -19,4 +19,9 @@ def convert_to_greyscale():
 	print("brightest coordinates:", coords)
 
 
+
+
+
+
+
 convert_to_greyscale()
