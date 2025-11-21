@@ -21,10 +21,10 @@ def convert_to_greyscale():
 
 	x, y = coords[1], coords[0]
 
-	cv2.circle(img_array, (x, y), radius=5, color=(0,0,255), thickness=2_
+	cv2.circle(img_array, (x, y), radius=5, color=(0,0,255), thickness=2)
 
 	cv2.imshow("Brightest Pixel", img_array)
-	cv2.waitkey(0)
+	cv2.waitKey(0)
 	cv2.destroyAllWindows()
 
 
