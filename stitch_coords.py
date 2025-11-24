@@ -1,6 +1,6 @@
-XY_FILE = "coords_xy.txt"
-ZY_FILE = "coords_zy.txt"
-OUT_FILE = "coords_3d.txt"
+XY_FILE = "coords/coords_xy.txt"
+ZY_FILE = "coords/coords_zy.txt"
+OUT_FILE = "coords/coords_3d.txt"
 
 def read_coords(fname):
     with open(fname) as f:
