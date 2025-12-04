@@ -16,7 +16,7 @@ if len(xy) != len(zy):
 
 with open(OUT_FILE, "w") as out:
     for (x, y1), (z, y2) in zip(xy, zy):
-        y = max(y1, y2)                     # takes the larger y value
+        y = int((y1 + y2) / 2)                # average of two y values
         out.write(f"{x},{y},{z}\n")
 
 print("Created:", OUT_FILE)
