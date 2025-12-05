@@ -173,14 +173,17 @@ def xmaslight():
     max_coord = coords[0].copy()
     min_coord = coords[0].copy()
 
-    top_coord_indices = [0]
+    # ********** FIXED: FIND HIGHEST Z VALUES **********
+    # Build a sorted list of the highest Z-value LEDs (fork starting points)
+    top_coord_indices = sorted(
+        range(len(coords)),
+        key=lambda i: coords[i][2],
+        reverse=True
+    )[:max_number_of_forks]
+    # ***************************************************
 
-    for index, coord in enumerate(coords):
-        if coord[2] > coords[top_coord_indices[0]][2]:
-            top_coord_indices.insert(0, index)
-            if len(top_coord_indices) >= max_number_of_forks:
-                top_coord_indices.pop()
-
+    # Expand min/max coord
+    for coord in coords:
         for i in range(3):
             max_coord[i] = max(max_coord[i], coord[i])
             min_coord[i] = min(min_coord[i], coord[i])
@@ -244,7 +247,6 @@ def xmaslight():
                 fork_search_sizes[i] = -(random.random() + 0.5) * standard_step_size
                 fork_colours[i] = createRandomGRBColour(fork_colours[(i - 1) % number_of_forks_to_use])
 
-                # Reset fork
                 fork_coords_indices[i] = [top_coord_indices[i]]
                 pixel_colour[top_coord_indices[i]] = addColours(pixel_colour[top_coord_indices[i]], fork_colours[i])
 
@@ -268,7 +270,7 @@ def xmaslight():
             # Search for neighbours
             hits = []
             for LED in range(len(coords)):
-                if coords[LED][2] < coords[last][2] and LED != last:
+                if coords[LED][2] > coords[last][2] and LED != last:
                     d = vectorNorm(coords[LED], coords[last])
                     if d < fork_search_sizes[i]:
                         hits.append(LED)
@@ -292,7 +294,7 @@ def xmaslight():
                 fork_coords_indices[i] = [hits[0]]
             else:
                 for h in hits:
-                    if h in fork_coords_indices[i]:
+                    if h in fork_coords_indices[i] and h != last:
                         fork_coords_indices[i].remove(h)
 
             # Write pixels
