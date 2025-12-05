@@ -1,6 +1,6 @@
 XY_FILE = "coords/coords_xy.txt"
 ZY_FILE = "coords/coords_zy.txt"
-OUT_FILE = "coords/coords_3d.txt"
+OUT_FILE = "coords/coords_3dd.txt"
 
 def read_coords(fname):
     with open(fname) as f:
@@ -17,6 +17,6 @@ if len(xy) != len(zy):
 with open(OUT_FILE, "w") as out:
     for (x, y1), (z, y2) in zip(xy, zy):
         y = int((y1 + y2) / 2)                # average of two y values
-        out.write(f"{x},{y},{z}\n")
+        out.write(f"[{x}, {y}, {z}]\n")
 
 print("Created:", OUT_FILE)
