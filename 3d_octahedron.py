@@ -86,10 +86,15 @@ def xmaslight():
         return Color(col[1], col[0], col[2])
 
     run = 1
-    coordmat = np.asmatrix(
-        np.array(coords) + np.array([0.,0.,220]),
-        dtype=np.float64
-    ).transpose()  # Put LED coordinates into appropriate numpy matrix form to prepare for rotations.
+
+    coords_arr = np.array(coords, dtype=np.float64)
+
+    # centers around origin 
+    center = coords_arr.mean(axis=0)
+    coords_centered = coords_arr - center
+
+    coordmat = np.asmatrix(coords_centered).transpose()
+
 
     cnt = 0
     
