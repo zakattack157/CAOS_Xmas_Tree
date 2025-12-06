@@ -26,9 +26,11 @@ def random3DValues(min_values, max_values, not_like_this=[]):
         max_values = [max_values]*3
     new_values = []
     for i in range(3):
-        new_values.append(random.randint(min_values[i], max_values[i]))
-        if len(not_like_this) == 3 and abs(new_values[i]-not_like_this[i]) < (max_values[i]-min_values[i])*0.1:
-            new_values[i] = min_values[i] + (new_values[i] + (max_values[i]-min_values[i])//2) % (max_values[i]-min_values[i])
+        low = int(min_values[i])
+        high = int(max_values[i])
+        new_values.append(random.randint(low, high))
+        if len(not_like_this) == 3 and abs(new_values[i]-not_like_this[i]) < (high-low)*0.1:
+            new_values[i] = low + (new_values[i] + (high-low)//2) % (high-low)
     return new_values
 
 def createRandomRGB(not_like_this=[]):
@@ -67,7 +69,6 @@ def fadeColours(current, target, fadePerCycle=1.0):
 
 def vectorNorm(v1, v2=[0,0,0]):
     return math.sqrt(sum((a-b)**2 for a,b in zip(v1,v2)))
-
 
 # MAIN
 def xmaslight():
@@ -149,6 +150,5 @@ def xmaslight():
         if cycles >= number_of_spheres_to_use:
             number_of_spheres_to_use = random.randint(1,number_of_spheres)
             cycles = 0
-
 
 xmaslight()
