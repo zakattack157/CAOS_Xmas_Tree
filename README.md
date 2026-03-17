@@ -1,18 +1,28 @@
 # CAOS Xmas Tree
-A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. Uses computer vision to determine each LED's position and renders animations in 3D space on the tree.
+A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. 
+
+Uses computer vision to determine each LED's position and renders animations in 3D space on the tree.
 
 ## Index
 
-- [Features](#-features)
-- [Hardware Used](#-hardware-used)
-- [Technology Used](#-technology-used)
-- [Setup](#-setup)
-- [Process](#-process)
-- [Future Milestones](#-future-milestones)
+- [Features](#features)
+- [Hardware Used](#hardware-used)
+- [Technology Used](#technology-used)
+- [Setup](#setup)
+- [Process](#process)
+- [Future Milestones](#future-milestones)
 
 ## Features
 
-- 
+- 650 individually addressable LEDs
+
+- 3D LED position mapping using computer vision
+
+- LEDs controlled via Raspberry Pi
+
+- Supports custom animations
+
+- Resume LED capture if interrupted
 
 ## Hardware Used
 
@@ -41,9 +51,11 @@ A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. Uses com
 
 1. Clone the repo
 
-```git clone https://github.com/zakattack157/CAOS_Xmas_Tree.git cd CAOS_Xmas_Tree```
+```git clone https://github.com/zakattack157/CAOS_Xmas_Tree.git```
 
-2. Create Virtual Enviornment
+``` cd CAOS_Xmas_Tree```
+
+2. Create Virtual Environment
 
 ```python3 -m venv venv```
 
@@ -57,10 +69,10 @@ A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. Uses com
 
 ```python strandtest.py```
 
-## Our Process
+## Process
 
 1. Hardware Setup
-- Wire the LED's together
+- Wire the LEDs together
 - Connect the 12V power supply
 - Connect Raspberry Pi
 
@@ -70,7 +82,9 @@ A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. Uses com
 - Run basic RGB test patterns
 
 3. Coordinate Mapping (X, Y)
-- Capture an image for each lit LED using a webcam (works best in dark room)
+- Only one LED is turned on at a time during capture
+- Run ```get_images.py``` to capture an image for each lit LED using a webcam (works best in dark room)
+- ```strandtest.py``` must be run at the same time to turn on each individual LED 
 - OpenCV used to detect brightest pixel
 - (X, Y) coords are saved for each LED
 - Coordinate results are saved to ```coords_xy.txt``` within the ```coords``` directory
@@ -92,10 +106,25 @@ A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. Uses com
 - Imported animations from external projects
 - Use animations to test the 3D coordinates
 
+### Coordinate Image Capturing Notes
+- Only one LED should be active during capture
+- The brightest pixel detected is assumed to be the LED position
+- Consistent lighting will help accuracy immensely
+- Consistent webcam and tree position will also help immensely
+- Raspberry Pi and computer capturing images must stay synchronized so the correct LED is lit during each image
+
+### Capture Recovery
+- The starting LED index can be manually adjusted in ```get_images.py```
+- This allows the capture process to resume from a specific LED if interrupted
+
+> This is very useful if the script stops mid-run, you won't need to restart the entire capture process.
+
 
 ## Future Milestones 
 
-* Cleaning up repo (better organization)
+* Cleaning up the repo (better organization)
+
+* Automating ```get_images.py```
 
 * Adding more animations
 
