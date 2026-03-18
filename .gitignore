@@ -208,3 +208,7 @@ __marimo__/
 
 # Mac Hidden Files
 .DS_Store
+
+# Ignore Image Capture Folders
+xy/
+zy/
