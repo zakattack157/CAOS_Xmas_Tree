@@ -1,3 +1,5 @@
+> Note: Not all animations in the directory are properly working. Need to push the actual files from Raspberry Pi.
+
 # CAOS Xmas Tree
 A 3D-mapped LED Christmas tree using 650 individually addressable LEDs. 
 
