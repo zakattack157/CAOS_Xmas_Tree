@@ -99,7 +99,7 @@ Uses computer vision to determine each LED's position and renders animations in 
 
 5. 3D Coordinate Generation
 - Run ```stitch_coords.py``` to merge coordinate datasets
-- This creates the full (X, Y, Z) coordinates and is saved within the ```coords``` directory as ```coords.3d```
+- This creates the full (X, Y, Z) coordinates and is saved within the ```coords``` directory as ```coords_3d.py```
 
 6. Animations
 - Adapted code to work with ```rpi-ws281x```
