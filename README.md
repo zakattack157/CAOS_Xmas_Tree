@@ -5,6 +5,11 @@ A 3D-mapped LED Christmas tree using 650 individually addressable LEDs.
 
 Uses computer vision to determine each LED's position and renders animations in 3D space on the tree.
 
+## Demo
+Example animation running on the tree:
+
+![Tree Demo](https://github.com/user-attachments/assets/f42a368f-f2ea-4515-ba59-15f1414999f8)
+
 ## Index
 
 - [Features](#features)
@@ -55,7 +60,7 @@ Uses computer vision to determine each LED's position and renders animations in 
 
 ```git clone https://github.com/zakattack157/CAOS_Xmas_Tree.git```
 
-``` cd CAOS_Xmas_Tree```
+```cd CAOS_Xmas_Tree```
 
 2. Create Virtual Environment
 
